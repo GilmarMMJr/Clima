@@ -67,7 +67,7 @@ extension WeatherViewController: UITextFieldDelegate {
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         
-        if let city = searchTextField.text {
+        if let city = searchTextField.text?.trimmingCharacters(in: .whitespaces) {
             
             weatherManager.fetchWeather(cityName: city)
             spinner.startAnimating()

@@ -24,13 +24,21 @@ struct WeatherManager {
     
     func fetchWeather(cityName: String) {
         let urlString = "\(weatherURL)appid=\(yourKey)&units=\(units)&q=\(cityName)"
-        print(urlString)
-        performRequest(with: urlString)
+        
+        if let url =  urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) {
+            performRequest(with: url)
+        }
+        
+        
     }
     
     func fetWeather(latitude: CLLocationDegrees, longitude: CLLocationDegrees ) {
         let urlString = "\(weatherURL)appid=\(yourKey)&units=\(units)&lat=\(latitude)&lon=\(longitude)"
-        performRequest(with: urlString)
+        
+        if let url = urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) {
+            performRequest(with: url)
+        }
+        
     }
     
     
